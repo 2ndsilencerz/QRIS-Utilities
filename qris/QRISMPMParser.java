@@ -1,6 +1,4 @@
-package com.mlpt.merchant.transactionservice.mpm.util;
-
-import com.mlpt.merchant.transactionservice.common.service.CommonServiceImpl;
+package qris;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -109,7 +107,7 @@ public class QRISMPMParser {
     }
 
     public static boolean compareCRC(Map<String, String> source, String crc) {
-        String calculated = new CommonServiceImpl().Checksum(getQRISDataWithoutCRC(source));
+        String calculated = Utils.Checksum(getQRISDataWithoutCRC(source));
         return crc.equals(calculated);
     }
 }

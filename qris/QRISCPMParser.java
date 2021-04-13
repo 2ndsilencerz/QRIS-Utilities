@@ -1,7 +1,8 @@
-package com.mlpt.merchant.transactionservice.cpm.util;
+package qris;
 
-import com.mlpt.merchant.transactionservice.mpm.util.QRISMPMParser;
+// compile group: 'commons-codec', name: 'commons-codec', version: '1.15'
 import org.apache.commons.codec.binary.Hex;
+// compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '9.0.43'
 import org.apache.tomcat.util.codec.binary.Base64;
 
 import java.util.Arrays;

@@ -1,6 +1,4 @@
-package com.mlpt.merchant.transactionservice.mpm.util;
-
-import com.mlpt.merchant.transactionservice.common.service.CommonServiceImpl;
+package qris;
 
 import java.util.Locale;
 import java.util.Map;
@@ -135,7 +133,7 @@ public class QRISMPMBuilder extends QRISMPMParser {
                 stringBuilder.append(entry.getValue());
             }
         }
-        String crc = new CommonServiceImpl().Checksum(stringBuilder.toString().concat("6304")).toUpperCase(Locale.ROOT);
+        String crc = Utils.Checksum(stringBuilder.toString().concat("6304")).toUpperCase(Locale.ROOT);
         stringBuilder.append("6304".concat(crc));
         return stringBuilder.toString();
     }

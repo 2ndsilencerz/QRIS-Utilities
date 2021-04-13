@@ -1,17 +1,10 @@
-package com.mlpt.merchant.transactionservice.mpm.util;
+package qris;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.mlpt.merchant.transactionservice.common.util.CommonUtil;
-
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Transient;
 import java.util.Date;
 import java.util.Map;
 
-@MappedSuperclass
 public class QRISMPMResult {
 
-	// extend this model to your desired model or use BeanUtils.copyProperties
 	String payloadFormatIndicator;
 	String pointOfInitiationMethod;
 	String globalUniqueIdentifier;
@@ -54,25 +47,21 @@ public class QRISMPMResult {
 		ACTIVE, INACTIVE
 	}
 
-	@Transient
 	Map<String, String> qrisParsed;
 
 	public QRISMPMResult() {
 	}
 
-	@JsonIgnore
 	public QRISMPMResult(String qrisRaw) {
 		this.qrisParsed = new QRISMPMParser(qrisRaw).getResult();
 		this.setContents();
 	}
 
-	@JsonIgnore
 	public QRISMPMResult(Map<String, String> qrisParsed) {
 		this.qrisParsed = qrisParsed;
 		this.setContents();
 	}
 
-	@JsonIgnore
 	private void setContents() {
 		this.payloadFormatIndicator = qrisParsed.get("00");
 		this.pointOfInitiationMethod = qrisParsed.get("01");
@@ -136,7 +125,6 @@ public class QRISMPMResult {
 		}
 	}
 
-	@JsonIgnore
 	private void getBit62Contents(Map<String, String> qrisParsed) {
 		String[] contents = new String[9];
 		for (int i = 1; i < 10; i++) {
@@ -158,7 +146,6 @@ public class QRISMPMResult {
 		this.additionalConsumerDataRequest = contents[8];
 	}
 
-	@JsonIgnore
 	private void getBit64Contents(Map<String, String> qrisParsed) {
 		String[] contents = new String[3];
 		for (int i = 0; i < 3; i++) {
@@ -455,10 +442,5 @@ public class QRISMPMResult {
 
 	public void setInactiveDate(Date inactiveDate) {
 		this.inactiveDate = inactiveDate;
-	}
-
-	@Override
-	public String toString() {
-		return CommonUtil.printPrettyJSON(this);
 	}
 }

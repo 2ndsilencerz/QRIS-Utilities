@@ -1,6 +1,4 @@
-package com.mlpt.merchant.transactionservice.cpm.util;
-
-import com.mlpt.merchant.transactionservice.common.util.CommonUtil;
+package qris;
 
 import java.util.Map;
 
@@ -232,10 +230,5 @@ public class QRISCPMResult {
 
     public void setIssuerQRISData(String issuerQRISData) {
         this.issuerQRISData = issuerQRISData;
-    }
-
-    @Override
-    public String toString() {
-        return CommonUtil.printPrettyJSON(this);
     }
 }
